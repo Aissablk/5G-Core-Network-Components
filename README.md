@@ -19,7 +19,7 @@ This project sets up a local Kubernetes environment for deploying core component
 
 1) Single instance deployment
 2) Persistent data storage
-3) Configuration located in mongodb-deployment.yaml
+3) Configuration located in mongo-pv-pvc.yml
 
 # Network Repository Function (NRF)
 
@@ -46,13 +46,15 @@ This project sets up a local Kubernetes environment for deploying core component
 `kubectl apply -f mongodb-deployment.yaml`
 `kubectl apply -f nrf-deployment.yaml`
 `kubectl apply -f amf-deployment.yaml`
-#Verify Deployments
+# Verify Deployments 
+``` this command ```
 `kubectl get pods`
 `kubectl get services`
 `Troubleshooting`
 
+
 Check pod logs: 
 `kubectl logs <pod-name>`
-Verify network connectivity 
+Verify network connectivity and 
 Ensure correct configuration mounting
 
