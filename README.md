@@ -1,11 +1,11 @@
 # Project Overview
 This project sets up a local Kubernetes environment for deploying core components of a 5G network, demonstrating containerization and Kubernetes configuration for network functions.
-Prerequisites
+# Prerequisites
 
-# Docker
-# Minikube
-# Kubectl
-# Basic Kubernetes knowledge
+`Docker`
+`Minikube`
+`Kubectl`
+
 
 # Environment Setup
 1. Install Prerequisites
@@ -13,7 +13,7 @@ Prerequisites
 # Install Minikube
 # Install Kubectl
 2. Start Minikube
-bashCopyminikube start
+ `minikube start`
 # Deployment Components
 # MongoDB Database
 
@@ -53,6 +53,6 @@ bashCopyminikube start
 
 Check pod logs: 
 `kubectl logs <pod-name>`
-Verify network connectivity
+Verify network connectivity 
 Ensure correct configuration mounting
 
