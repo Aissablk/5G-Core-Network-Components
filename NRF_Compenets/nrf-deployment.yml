@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nrf
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nrf
+  template:
+    metadata:
+      labels:
+        app: nrf
+    spec:
+      containers:
+        - name: nrf
+          image: free5gmano/free5gc-control-plane:stage3.1.1-amd64
+          command: ["/bin/sh", "-c"]
+          args: ["sleep 5s && ./bin/nrf"]
+          volumeMounts:
+            - mountPath: /free5gc/config/nrfcfg.yaml
+              subPath: nrfcfg.yaml
+              name: nrf-config
+          env:
+            - name: MONGODB_URI
+              value: "mongodb://mongodb:27017"
+      volumes:
+        - name: nrf-config
+          configMap:
+            name: nrf-config
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nrf-config
+data:
+  nrfcfg.yaml: |
+    # Ajoutez ici le contenu de votre fichier nrfcfg.yaml

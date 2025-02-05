@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amf
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: amf
+  template:
+    metadata:
+      labels:
+        app: amf
+    spec:
+      containers:
+      - name: amf
+        image: free5gmano/free5gc-control-plane:stage3.1.1-amd64
+        command: ["/bin/sh", "-c", "sleep 5s && ./bin/amf"]
+        volumeMounts:
+        - name: amf-config
+          mountPath: /free5gc/config/amfcfg.yaml
+          subPath: amf-config.yaml
+      volumes:
+      - name: amf-config
+        configMap:
+          name: amf-config

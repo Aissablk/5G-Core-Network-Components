@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nrf
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nrf
+  template:
+    metadata:
+      labels:
+        app: nrf
+    spec:
+      containers:
+      - name: nrf
+        image: free5gmano/free5gc-control-plane:stage3.1.1-amd64
+        command: ["/bin/sh", "-c", "sleep 5s && ./bin/nrf"]
+        volumeMounts:
+        - name: nrf-config
+          mountPath: /free5gc/config/nrfcfg.yaml
+          subPath: nrfcfg.yaml
+      volumes:
+      - name: nrf-config
+        configMap:
+          name: nrf-config
