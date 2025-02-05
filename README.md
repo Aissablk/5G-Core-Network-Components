@@ -47,13 +47,13 @@ This project sets up a local Kubernetes environment for deploying core component
 `kubectl apply -f nrf-deployment.yaml`
 `kubectl apply -f amf-deployment.yaml`
 # Verify Deployments 
-``` this command ```
+
 `kubectl get pods`
-`kubectl get services`
-`Troubleshooting`
+`kubectl get svc`
 
 
-Check pod logs: 
+
+# Check pod logs: 
 `kubectl logs <pod-name>`
 Verify network connectivity and 
 Ensure correct configuration mounting
